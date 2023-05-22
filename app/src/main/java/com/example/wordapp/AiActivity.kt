@@ -8,6 +8,7 @@ import com.example.wordapp.databinding.ActivityAiBinding
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import java.io.IOException
@@ -19,6 +20,7 @@ class AiActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding= ActivityAiBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,6 +40,7 @@ class AiActivity : AppCompatActivity() {
 
 
     }
+
     fun getresponse(question: String, callback: (String) -> Any){
 
         val apikey="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   "
@@ -70,11 +73,17 @@ class AiActivity : AppCompatActivity() {
             override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
                 val body=response.body?.string()
 
-                println(body)/*
-                val jsonObject=JSONObject(body)
-                val jsonArray=jsonObject.getJSONArray("choices")
-                val text=jsonArray.getJSONObject(0).getString("text")
-                callback(text)*/
+                println(body)
+                try{
+                    val jsonObject= JSONObject(body)
+                    val jsonArray=jsonObject.getJSONArray("choices")
+                    val text=jsonArray.getJSONObject(0).getString("text")
+                    callback(text)
+                }catch (e:Exception){
+                    e.printStackTrace()
+                    Toast.makeText(this@AiActivity,e.localizedMessage,Toast.LENGTH_LONG).show()
+                }
+
             }
         })
 

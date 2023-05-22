@@ -1,3 +1,4 @@
+
 package com.example.wordapp
 
 import android.os.Bundle
@@ -30,6 +31,7 @@ class DictionaryFragment : Fragment() {
     }
 
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -38,6 +40,7 @@ class DictionaryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         recyclerDictionary=view.findViewById(R.id.dictionaryRecycler)
         recyclerDictionary.layoutManager= LinearLayoutManager(view.context)
@@ -60,12 +63,16 @@ class DictionaryFragment : Fragment() {
             }
         }
 
-
+        val btnSave=view.findViewById<Button>(R.id.btnSave)
+        btnSave.setOnClickListener {
+            viewModel.saveWord()
+        }
 
 
     }
 
     fun observeLiveData(){
+
         viewModel.meanings.observe(viewLifecycleOwner, Observer {
             if(it!=null){
                 println("it is not null")

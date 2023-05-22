@@ -1,18 +1,22 @@
 package com.example.wordapp.MVVM
 
+import android.app.Application
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.wordapp.services.RequestManager
+import com.example.wordapp.services.WordDatabase
 import com.example.wordapp.services.onFetchDataListener
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
+import java.util.UUID
 import kotlin.coroutines.coroutineContext
 
 
-class WordMeaningsWievModel:ViewModel() {
+class WordMeaningsWievModel(application: Application):BaseViewModel(application) {
     val meanings= MutableLiveData<Word>()
     val meaningsErrors= MutableLiveData<Boolean>()
     val meaningsLoading= MutableLiveData<Boolean>()
@@ -24,7 +28,7 @@ class WordMeaningsWievModel:ViewModel() {
 
     fun refreshData(){
 
-       
+
         meaningsErrors.value=false
         meaningsLoading.value=false
     }
@@ -51,30 +55,23 @@ class WordMeaningsWievModel:ViewModel() {
                 meaningsErrors.value=true
             }
 
-                                                         },url)
+        },url)
 
-        /*disposable.add(
-            RequestManager().getWordMeaning(onFetchDataListener(),url)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.io())
-                .subscribeWith(object: DisposableSingleObserver<ArrayList<Word>>(){
-                    override fun onSuccess(t: ArrayList<Word>) {
-                        meanings.value=t
-                        meaningsErrors.value=false
-                        meaningsLoading.value=false
 
-                    }
-
-                    override fun onError(e: Throwable) {
-                        e.printStackTrace()
-                        //error verme kısmı eklenebilir
-
-                    }
-
-                })
-
-        )*/
     }
+    fun saveWord(){
+        launch {
+            meanings.value.let {
+                val dao=WordDatabase(getApplication()).wordDao()
+                val uuid=UUID.randomUUID().toString()
+                meanings.value!!.id=uuid
+                dao.insertAll(meanings.value!!)
+
+            }
+
+        }
+    }
+
 
 }
 

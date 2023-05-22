@@ -82,7 +82,7 @@ app:cardCornerRadius="15dp"
                     android:textStyle="bold"></TextView>
 
                 <ImageButton
-                    android:id="@+id/imageBton"
+                    android:id="@+id/btnSave"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -115,7 +115,8 @@ app:cardCornerRadius="15dp"
         android:layout_height="117dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="15dp"
-        app:cardBackgroundColor="#E8ECE6">
+        app:cardBackgroundColor="#E8ECE6"
+        tools:ignore="ExtraText">
      >
 
         <LinearLayout
@@ -150,7 +151,8 @@ android:gravity="center"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/green"
-                    android:src="@android:drawable/ic_lock_silent_mode_off" />
+                    android:src="@android:drawable/ic_lock_silent_mode_off"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
             </LinearLayout>
