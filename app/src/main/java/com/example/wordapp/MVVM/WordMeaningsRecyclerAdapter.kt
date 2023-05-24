@@ -27,7 +27,7 @@ class WordMeaningsRecyclerAdapter(var meanings:ArrayList<Meanings>):RecyclerView
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvKind.setText(meanings.get(position).partOfSpeech)
         holder.tvKindExp.setText((meanings.get(position).definitions!!.get(0).definition))
-        holder.tvExample.setText((meanings.get(position).definitions!!.get(0).definition))
+        holder.tvExample.setText((meanings.get(position).definitions!!.get(0).example))
 
 
     }

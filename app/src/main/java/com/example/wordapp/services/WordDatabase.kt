@@ -4,25 +4,38 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.wordapp.MVVM.Word
+import androidx.room.TypeConverters
+import com.example.wordapp.MVVM.*
+import com.example.wordapp.MVVM.Converters.*
 
-@Database(entities = arrayOf(Word::class), version = 1)
+@Database(entities = arrayOf(Word::class), version = 2)
+@TypeConverters(
+    PhoneticConverter::class, MeaningConverter::class,
+    DefinitionConverter::class, DefinitionConverter2::class,
+    PhoneticArrayConverter::class,MeaningArrayConverter::class
+    ,JsonConverter::class,DefinitionsArrayConverter::class,JsonmeaningConverter::class)
 abstract class WordDatabase:RoomDatabase() {
     abstract fun wordDao():WordDAO
 
     companion object{
-        @Volatile private var instance:WordDatabase?=null
-        private val lock =Any()
-        operator fun invoke(context: Context)= instance?: synchronized(lock){
-            instance?: createWordDatabase(context).also {
-                instance=it
+        @Volatile private var INSTANCE:WordDatabase?=null
+
+        operator fun invoke(context: Context):WordDatabase{
+           var  instance= INSTANCE
+            if(instance!=null){
+                   return instance
             }
+            synchronized(this){
+                val instance=Room.databaseBuilder(context.applicationContext,WordDatabase::class.java,"WordDatabase.db").build()
+                INSTANCE=instance
+                return instance
+            }
+
+
         }
 
-        private fun createWordDatabase(context: Context)= Room.databaseBuilder(
-            context.applicationContext,WordDatabase::class.java,"worddatabase"
-        ).build()
     }
+
 
 
 

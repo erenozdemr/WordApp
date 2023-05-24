@@ -2,13 +2,13 @@
 package com.example.wordapp
 
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wordapp.MVVM.WordMeaningsRecyclerAdapter
 import com.example.wordapp.MVVM.WordMeaningsWievModel
 import kotlinx.android.synthetic.main.fragment_dictionary.*
-import kotlinx.android.synthetic.main.word_list_row.*
 
 
 class DictionaryFragment : Fragment() {
@@ -63,8 +62,9 @@ class DictionaryFragment : Fragment() {
             }
         }
 
-        val btnSave=view.findViewById<Button>(R.id.btnSave)
+        val btnSave=view.findViewById<ImageButton>(R.id.btnSave)
         btnSave.setOnClickListener {
+
             viewModel.saveWord()
         }
 

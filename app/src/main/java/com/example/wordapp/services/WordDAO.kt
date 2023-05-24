@@ -12,7 +12,7 @@ interface WordDAO {
     suspend fun insertAll(vararg word : Word):List<Long>
 
     @Query("SELECT * FROM word")
-    suspend fun getAllWords():ArrayList<Word>
+    suspend fun getAllWords():List<Word>
 
     @Query("SELECT * FROM word WHERE id = :wordID")
     suspend fun getWord(wordID:Int):Word

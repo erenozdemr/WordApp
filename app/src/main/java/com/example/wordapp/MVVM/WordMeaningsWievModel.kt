@@ -1,3 +1,4 @@
+
 package com.example.wordapp.MVVM
 
 import android.app.Application
@@ -6,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.wordapp.services.RequestManager
+import com.example.wordapp.services.WordDAO
 import com.example.wordapp.services.WordDatabase
 import com.example.wordapp.services.onFetchDataListener
 import io.reactivex.disposables.CompositeDisposable
@@ -22,18 +24,14 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
     val meaningsLoading= MutableLiveData<Boolean>()
 
 
-    private val disposable=CompositeDisposable()
-
 
 
     fun refreshData(){
-
 
         meaningsErrors.value=false
         meaningsLoading.value=false
     }
     fun getWord(url:String,context:Context){
-
         meaningsLoading.value=true
         var manager=RequestManager(context)
         println("getword e girildi")
@@ -62,7 +60,8 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
     fun saveWord(){
         launch {
             meanings.value.let {
-                val dao=WordDatabase(getApplication()).wordDao()
+                var dao=WordDatabase.invoke(getApplication()).wordDao()
+
                 val uuid=UUID.randomUUID().toString()
                 meanings.value!!.id=uuid
                 dao.insertAll(meanings.value!!)
@@ -71,6 +70,7 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
 
         }
     }
+
 
 
 }

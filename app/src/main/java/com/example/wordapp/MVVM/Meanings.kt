@@ -1,5 +1,8 @@
 package com.example.wordapp.MVVM
 
-class Meanings(var partOfSpeech:String="",var definitions:ArrayList<Definitions>? =null) {
+import androidx.room.TypeConverter
+
+
+class Meanings(var partOfSpeech:String="",var definitions:ArrayList<Definitions> =ArrayList<Definitions>()) {
 
 }

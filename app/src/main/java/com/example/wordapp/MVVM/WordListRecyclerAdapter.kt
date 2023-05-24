@@ -24,8 +24,14 @@ class WordListRecyclerAdapter(var wordList:ArrayList<Word>):RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: WordListViewHolder, position: Int) {
-        holder.tvWord.text=wordList.get(position).word
-        //meaning parts will be added
+        if(wordList.size!=0){
+            holder.tvWord.text=wordList.get(position).word
+            println(wordList.get(position).meanings.get(0).partOfSpeech)
+            println(wordList.get(position).phonetic.get(0).text)
+            println(wordList.get(position).meanings.get(0).definitions[0].example)
+            holder.tvMeaning.text=wordList.get(position).meanings.get(0).definitions.get(0).definition
+        }
+
     }
     fun refreshWordlist(newWordlist:ArrayList<Word>){
         wordList.clear()
