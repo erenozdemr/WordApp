@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wordapp.ListWordsFragmentDirections
 import com.example.wordapp.R
 
 class WordListRecyclerAdapter(var wordList:ArrayList<Word>):RecyclerView.Adapter<WordListRecyclerAdapter.WordListViewHolder>() {
@@ -30,6 +31,10 @@ class WordListRecyclerAdapter(var wordList:ArrayList<Word>):RecyclerView.Adapter
             println(wordList.get(position).phonetic.get(0).text)
             println(wordList.get(position).meanings.get(0).definitions[0].example)
             holder.tvMeaning.text=wordList.get(position).meanings.get(0).definitions.get(0).definition
+        }
+        holder.itemView.setOnClickListener {
+            val action=ListWordsFragmentDirections.actionListWordsFragmentToDictionaryFragment(id=wordList.get(position).id)
+            Navigation.findNavController(it).navigate(action)
         }
 
     }

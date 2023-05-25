@@ -12,17 +12,20 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordapp.MVVM.WordMeaningsRecyclerAdapter
 import com.example.wordapp.MVVM.WordMeaningsWievModel
 import kotlinx.android.synthetic.main.fragment_dictionary.*
+import kotlinx.coroutines.flow.callbackFlow
 
 
 class DictionaryFragment : Fragment() {
     private lateinit var viewModel: WordMeaningsWievModel
     private var adapter= WordMeaningsRecyclerAdapter(arrayListOf())
     lateinit var recyclerDictionary: RecyclerView
+    val args: DictionaryFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +53,24 @@ class DictionaryFragment : Fragment() {
         viewModel.refreshData()
 
 
+
         val etSearchBox=view.findViewById<EditText>(R.id.etSearchBox)
         val btnSearch=view.findViewById<Button>(R.id.btnSearch)
+
+        if(arguments?.isEmpty == false){
+            var id=args.id.toString()
+            if(!id.equals("noid")){
+                etSearchBox.visibility=View.GONE
+                btnSearch.visibility=View.GONE
+                viewModel.getWordWithID(id!!, requireContext().applicationContext)
+            }
+            else{
+                etSearchBox.visibility=View.VISIBLE
+                btnSearch.visibility=View.VISIBLE
+            }
+
+        }
+
         btnSearch.setOnClickListener {
             var wordSearch=etSearchBox.text.toString().trim()
             wordSearch?.let {
@@ -68,8 +87,13 @@ class DictionaryFragment : Fragment() {
             viewModel.saveWord()
         }
 
+        observeLiveData()
 
     }
+
+    
+
+
 
     fun observeLiveData(){
 

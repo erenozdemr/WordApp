@@ -70,6 +70,14 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
 
         }
     }
+    fun getWordWithID(id:String,context: Context){
+        launch {
+
+             var dao=WordDatabase.invoke(getApplication()).wordDao()
+             meanings.value=dao.getWord(id)
+
+        }
+    }
 
 
 

@@ -15,7 +15,7 @@ interface WordDAO {
     suspend fun getAllWords():List<Word>
 
     @Query("SELECT * FROM word WHERE id = :wordID")
-    suspend fun getWord(wordID:Int):Word
+    suspend fun getWord(wordID:String):Word
 
     @Query("DELETE FROM word")
     suspend fun deleteAllWords()

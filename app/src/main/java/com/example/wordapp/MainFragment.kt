@@ -45,7 +45,7 @@ class MainFragment : Fragment() {
             view.findNavController().navigate(action)
         }
         binding.btnDictionary.setOnClickListener {
-            var action=MainFragmentDirections.actionMainFragmentToDictionaryFragment()
+            var action=MainFragmentDirections.actionMainFragmentToDictionaryFragment("noid")
             view.findNavController().navigate(action)
         }
         binding.btnai.setOnClickListener{
