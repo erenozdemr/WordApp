@@ -9,9 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -56,13 +59,19 @@ class DictionaryFragment : Fragment() {
 
         val etSearchBox=view.findViewById<EditText>(R.id.etSearchBox)
         val btnSearch=view.findViewById<Button>(R.id.btnSearch)
+        val btnNote=view.findViewById<ImageButton>(R.id.btnNote)
+
 
         if(arguments?.isEmpty == false){
             var id=args.id.toString()
             if(!id.equals("noid")){
                 etSearchBox.visibility=View.GONE
                 btnSearch.visibility=View.GONE
-                viewModel.getWordWithID(id!!, requireContext().applicationContext)
+                viewModel.getWordWithID(id!!)
+                /*
+                btnSave.setImageResource(R.drawable.img_1)
+                btnNote.visibility=View.VISIBLE
+                tvGhost.setText("saved")*/
             }
             else{
                 etSearchBox.visibility=View.VISIBLE
@@ -83,15 +92,22 @@ class DictionaryFragment : Fragment() {
 
         val btnSave=view.findViewById<ImageButton>(R.id.btnSave)
         btnSave.setOnClickListener {
-
             viewModel.saveWord()
+            observeLiveData()
+        }
+
+        btnNote.setOnClickListener{
+            if(viewModel.meaningsSaved.value == true){
+                var action = DictionaryFragmentDirections.actionDictionaryFragmentToNoteFragment(viewModel.meanings.value!!.id)
+                Navigation.findNavController(it).navigate(action)
+            }
         }
 
         observeLiveData()
 
     }
 
-    
+
 
 
 
@@ -119,6 +135,15 @@ class DictionaryFragment : Fragment() {
         viewModel.meaningsLoading.observe(viewLifecycleOwner, Observer {
             if(it){
                 Toast.makeText(context,"Word is loading", Toast.LENGTH_LONG).show()// daha sonra progress bar eklenebilir
+            }
+        })
+        viewModel.meaningsSaved.observe(viewLifecycleOwner, Observer {
+            if(it){
+                btnSave.setImageResource(R.drawable.img_1)
+                btnNote.visibility=View.VISIBLE
+            }else{
+                btnSave.setImageResource(R.drawable.img)
+                btnNote.visibility=View.GONE
             }
         })
     }

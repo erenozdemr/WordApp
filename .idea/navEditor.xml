@@ -73,6 +73,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_listWordsFragment_to_dictionaryFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_listWordsFragment_to_mainFragment">
                               <value>
                                 <LayoutPositions />
@@ -125,6 +130,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="noteFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="118" />
+                            <option name="y" value="734" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

@@ -22,6 +22,7 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
     val meanings= MutableLiveData<Word>()
     val meaningsErrors= MutableLiveData<Boolean>()
     val meaningsLoading= MutableLiveData<Boolean>()
+    val meaningsSaved=MutableLiveData<Boolean>()
 
 
 
@@ -42,6 +43,7 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
                 meaningsErrors.value=false
                 meaningsLoading.value=false
                 meanings.value=apiResponce
+                isinDatabase()
 
 
 
@@ -58,25 +60,71 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
 
     }
     fun saveWord(){
-        launch {
-            meanings.value.let {
-                var dao=WordDatabase.invoke(getApplication()).wordDao()
+        meanings.value.let {
+            launch {
 
-                val uuid=UUID.randomUUID().toString()
-                meanings.value!!.id=uuid
-                dao.insertAll(meanings.value!!)
+                var dao=WordDatabase.invoke(getApplication()).wordDao()
+                isinDatabase()
+
+
+                if (meaningsSaved.value==false){
+                    val uuid=UUID.randomUUID().toString()
+                    meanings.value!!.id=uuid
+                    dao.insertAll(meanings.value!!)
+                    isinDatabase()
+                }else{
+                    unSaveWord()
+                }
+
+
+
 
             }
-
         }
+
     }
-    fun getWordWithID(id:String,context: Context){
+    fun unSaveWord(){
+        meanings.value.let {
+            launch {
+
+                var dao=WordDatabase.invoke(getApplication()).wordDao()
+
+
+
+                dao.deleteWordWithID(meanings.value!!.id)
+                isinDatabase()
+
+
+
+            }
+        }
+
+    }
+
+    fun getWordWithID(id:String){
         launch {
 
              var dao=WordDatabase.invoke(getApplication()).wordDao()
+
              meanings.value=dao.getWord(id)
+            isinDatabase()
 
         }
+    }
+    fun isinDatabase(){
+        if(meanings.value!=null){
+            launch {
+
+                var dao=WordDatabase.invoke(getApplication()).wordDao()
+                var tempWord=dao.toControlInDatabase(meanings.value!!.word)
+                if(tempWord!=null){
+                    meanings.value=tempWord!!
+                }
+                meaningsSaved.value = tempWord!=null
+
+            }
+        }
+
     }
 
 

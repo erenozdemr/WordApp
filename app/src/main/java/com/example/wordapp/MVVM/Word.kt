@@ -14,6 +14,7 @@ data class Word(
     @ColumnInfo(name = "phonetics")
     @SerializedName("phonetics")
     var phonetic:ArrayList<Phonetics>,
+    @ColumnInfo(name = "note")
     var note:String?=null
 
 ) {

@@ -79,7 +79,24 @@ app:cardCornerRadius="15dp"
                     android:paddingVertical="5dp"
                     android:text="Word"
                     android:textSize="20dp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="notsaved"
+                    android:visibility="gone"
+                    android:id="@+id/tvGhost"></TextView>
+
+                <ImageButton
+                    android:id="@+id/btnNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:src="@android:drawable/stat_notify_chat"
+                    android:visibility="gone"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <ImageButton
                     android:id="@+id/btnSave"
@@ -87,7 +104,7 @@ app:cardCornerRadius="15dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/white"
-                    android:src="@android:drawable/ic_menu_save"
+                    android:src="@drawable/img"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 

@@ -79,10 +79,23 @@
         <argument
             android:name="id"
             app:argType="string"
-            android:defaultValue='"noid"' />
+            android:defaultValue='noid' />
+        <action
+            android:id="@+id/action_dictionaryFragment_to_noteFragment"
+            app:destination="@id/noteFragment" />
     </fragment>
     <activity
         android:id="@+id/aiActivity"
         android:name="com.example.wordapp.AiActivity"
         android:label="AiActivity" />
+    <dialog
+        android:id="@+id/noteFragment"
+        android:name="com.example.wordapp.NoteFragment"
+        android:label="fragment_note"
+        tools:layout="@layout/fragment_note" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue='noid' />
+    </dialog>
 </navigation>
