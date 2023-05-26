@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_swipeFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_swipeFragment_to_dictionaryFragment"
+            app:destination="@id/dictionaryFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
