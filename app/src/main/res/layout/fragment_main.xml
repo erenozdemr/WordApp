@@ -1,85 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:backgroundTint="#D53535"
-    tools:context=".MainFragment">
+    android:layout_height="wrap_content"
+    tools:context=".MainFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_margin="10dp"
+        android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_card"
+            android:backgroundTint="@color/grey"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dictionary"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:padding="25dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnDictionary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#03A9F4"
+                android:text="Dictionary"
+                app:cornerRadius="30dp"
+                android:layout_alignParentBottom="true"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_card"
+            android:backgroundTint="@color/yellow"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add word"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:padding="25dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#2196F3"
+                android:text="Add word"
+                app:cornerRadius="30dp"
+                android:layout_alignParentBottom="true"
+                />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_card"
+            android:backgroundTint="@color/purple_200"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="quiz"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:padding="25dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnQuiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#00BCD4"
+                android:text="quiz"
+                app:cornerRadius="30dp"
+                android:layout_alignParentBottom="true"
+                />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_card"
+            android:backgroundTint="@color/teal_200"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="List words"
+                android:textSize="25dp"
+
+                android:textColor="@color/black"
+                android:padding="25dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#9C27B0"
+                android:text="List words"
+                app:cornerRadius="30dp"
+                android:layout_alignParentBottom="true"
+                />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_card"
+            android:backgroundTint="#4255C1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cards"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:padding="25dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnCards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#673AB7"
+                android:text="Cards"
+                app:cornerRadius="30dp"
+                android:layout_alignParentBottom="true"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_card"
+            android:backgroundTint="@color/grey"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ai Chat"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:padding="25dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#009688"
+                android:text="Ai Chat"
+                app:cornerRadius="30dp"
+                android:layout_alignParentBottom="true"
+                />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:backgroundTint="#2196F3"
-
-        android:text="Add word"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnQuiz"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnQuiz" />
-
-    <Button
-        android:id="@+id/btnDictionary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="76dp"
-        android:backgroundTint="#03A9F4"
-        android:text="Dictionary"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnQuiz"
-        app:layout_constraintEnd_toStartOf="@+id/btnQuiz" />
-
-    <Button
-        android:id="@+id/btnQuiz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="40dp"
 
 
-        android:backgroundTint="#00BCD4"
-        android:text="quiz"
-        app:cornerRadius="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:backgroundTint="#9C27B0"
-        android:text="List words"
-        app:cornerRadius="30dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnCards"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="216dp"
-        android:backgroundTint="#673AB7"
-        android:text="Cards"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btnai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/btnDictionary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
