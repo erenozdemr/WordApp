@@ -1,7 +1,11 @@
 
 package com.example.wordapp
 
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.MediaController
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
@@ -20,14 +25,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordapp.MVVM.WordMeaningsRecyclerAdapter
 import com.example.wordapp.MVVM.WordMeaningsWievModel
+import com.example.wordapp.databinding.FragmentDictionaryBinding
 import kotlinx.android.synthetic.main.fragment_dictionary.*
 import kotlinx.coroutines.flow.callbackFlow
+import java.lang.Exception
+import java.util.Locale
 
 
-class DictionaryFragment : Fragment() {
+class DictionaryFragment : Fragment(),TextToSpeech.OnInitListener {
+    lateinit var binding: FragmentDictionaryBinding
     private lateinit var viewModel: WordMeaningsWievModel
     private var adapter= WordMeaningsRecyclerAdapter(arrayListOf())
     lateinit var recyclerDictionary: RecyclerView
+    private lateinit var tts:TextToSpeech
     val args: DictionaryFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +51,9 @@ class DictionaryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dictionary, container, false)
+        binding= FragmentDictionaryBinding.inflate(inflater,container,false)
+        tts=TextToSpeech(requireContext(),this)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,16 +69,14 @@ class DictionaryFragment : Fragment() {
 
 
 
-        val etSearchBox=view.findViewById<EditText>(R.id.etSearchBox)
-        val btnSearch=view.findViewById<Button>(R.id.btnSearch)
-        val btnNote=view.findViewById<ImageButton>(R.id.btnNote)
+
 
 
         if(arguments?.isEmpty == false){
             var id=args.id.toString()
             if(!id.equals("noid")){
-                etSearchBox.visibility=View.GONE
-                btnSearch.visibility=View.GONE
+                binding.etSearchBox.visibility=View.GONE
+                binding.btnSearch.visibility=View.GONE
                 viewModel.getWordWithID(id!!)
                 /*
                 btnSave.setImageResource(R.drawable.img_1)
@@ -74,14 +84,14 @@ class DictionaryFragment : Fragment() {
                 tvGhost.setText("saved")*/
             }
             else{
-                etSearchBox.visibility=View.VISIBLE
-                btnSearch.visibility=View.VISIBLE
+                binding.etSearchBox.visibility=View.VISIBLE
+                binding.btnSearch.visibility=View.VISIBLE
             }
 
         }
 
-        btnSearch.setOnClickListener {
-            var wordSearch=etSearchBox.text.toString().trim()
+        binding.btnSearch.setOnClickListener {
+            var wordSearch=binding.etSearchBox.text.toString().trim()
             wordSearch?.let {
                 println("word ${wordSearch} is being searched")
                 viewModel.getWord(wordSearch,requireContext())
@@ -90,18 +100,23 @@ class DictionaryFragment : Fragment() {
             }
         }
 
-        val btnSave=view.findViewById<ImageButton>(R.id.btnSave)
-        btnSave.setOnClickListener {
+
+        binding.btnSave.setOnClickListener {
             viewModel.saveWord()
             observeLiveData()
         }
 
-        btnNote.setOnClickListener{
+        binding.btnNote.setOnClickListener{
             if(viewModel.meaningsSaved.value == true){
                 var action = DictionaryFragmentDirections.actionDictionaryFragmentToNoteFragment(viewModel.meanings.value!!.id)
                 Navigation.findNavController(it).navigate(action)
             }
         }
+        binding.btnSpeak.setOnClickListener{
+
+            tts.speak(viewModel.meanings.value!!.word,TextToSpeech.QUEUE_FLUSH,null,"")
+        }
+
 
         observeLiveData()
 
@@ -118,8 +133,8 @@ class DictionaryFragment : Fragment() {
                 println("it is not null")
                 recyclerDictionary.visibility=View.VISIBLE
                 var word=it
-                etWord.setText(word.word)
-                etPronunce.setText(word.phonetic.get(0).text)
+                binding.etWord.setText(word.word)
+                binding.etPronunce.setText(word.phonetic.get(0).text)
                 adapter.refreshMeanings(word.meanings)
 
             }
@@ -139,12 +154,23 @@ class DictionaryFragment : Fragment() {
         })
         viewModel.meaningsSaved.observe(viewLifecycleOwner, Observer {
             if(it){
-                btnSave.setImageResource(R.drawable.img_1)
-                btnNote.visibility=View.VISIBLE
+                binding.btnSave.setImageResource(R.drawable.img_1)
+                binding.btnNote.visibility=View.VISIBLE
             }else{
-                btnSave.setImageResource(R.drawable.img)
-                btnNote.visibility=View.GONE
+                binding.btnSave.setImageResource(R.drawable.img)
+                binding.btnNote.visibility=View.GONE
             }
         })
+    }
+
+    override fun onInit(status: Int) {
+        if(status==TextToSpeech.SUCCESS){
+            val result=tts.setLanguage(Locale.UK)
+            if(result==TextToSpeech.LANG_MISSING_DATA||result==TextToSpeech.LANG_NOT_SUPPORTED){
+                Log.e("TTS","Laguage is not supported")
+            }
+        }else{
+            Log.e("TTS","Initalization failed")
+        }
     }
 }
