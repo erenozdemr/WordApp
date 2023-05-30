@@ -1,14 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizFragment">
+    tools:context=".QuizFragment"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="30dp">
 
-</FrameLayout>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="0dp"
+
+            android:progressBackgroundTintMode="screen"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:max="10"
+            android:layout_weight="1"
+            android:minHeight="50dp"
+            android:progress="1"
+            android:indeterminate="false"
+            android:outlineSpotShadowColor="@color/white"
+            android:outlineAmbientShadowColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:text="1/12"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question"
+
+
+        android:textSize="22dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginVertical="20dp"
+
+        />
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/opOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"
+
+
+        />
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/opTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"/>
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/opThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"/>
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/opFour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"/>
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="60dp"
+        android:paddingVertical="15dp"
+        android:text="SUBMIT"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        />
+
+</LinearLayout>
