@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/grey"
+        app:cardBackgroundColor="#DCE4D7"
         app:cardCornerRadius="15dp"
 
         >
@@ -19,8 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:gravity="center"
             android:text="hello"
-            android:paddingLeft="35dp"
+            android:textSize="20dp"
+           android:textColor="@color/black"
+            android:background="@drawable/shape_search"
             ></TextView>
 
         <TextView
@@ -29,6 +32,8 @@
             android:layout_marginTop="25dp"
             android:id="@+id/tvMeaning"
             android:text="an utterance of ‘hello’; a greeting."
+            android:textColor="#353434"
+            android:textSize="16dp"
             android:padding="26dp">
 
         </TextView>
