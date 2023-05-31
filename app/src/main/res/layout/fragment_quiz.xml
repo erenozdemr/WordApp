@@ -48,27 +48,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Question"
-
-
+android:background="#E8EAEC"
+android:gravity="center"
         android:textSize="22dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginVertical="20dp"
 
         />
+
     <TextView
-        android:padding="5dp"
         android:id="@+id/opOne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question"
-        android:gravity="center"
-        android:textSize="22dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="10dp"
 
+        android:background="#B7EFF8"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Question"
 
-        />
+
+        android:textSize="22dp" />
     <TextView
         android:padding="5dp"
         android:id="@+id/opTwo"
@@ -76,6 +79,9 @@
         android:layout_height="wrap_content"
         android:text="Question"
         android:gravity="center"
+
+        android:background="#B7EFF8"
+        android:textColor="@color/black"
         android:textSize="22dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="10dp"/>
@@ -86,6 +92,9 @@
         android:layout_height="wrap_content"
         android:text="Question"
         android:gravity="center"
+
+        android:background="#B7EFF8"
+        android:textColor="@color/black"
         android:textSize="22dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="10dp"/>
@@ -96,18 +105,25 @@
         android:layout_height="wrap_content"
         android:text="Question"
         android:gravity="center"
+
+        android:background="#B7EFF8"
+        android:textColor="@color/black"
         android:textSize="22dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="10dp"/>
+
     <Button
         android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="60dp"
-        android:paddingVertical="15dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="20dp"
+       android:backgroundTint="#E8EAEC"
+
+        android:paddingVertical="5dp"
         android:text="SUBMIT"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        />
+        android:layout_marginTop="45dp"
+        android:textColor="#000000"
+        android:textSize="20sp" />
 
 </LinearLayout>

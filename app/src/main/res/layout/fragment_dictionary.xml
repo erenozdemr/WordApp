@@ -36,7 +36,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="13dp"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="#5B72E3"
+            android:backgroundTint="#8FBAE8"
             android:text="Search"
             android:textColor="@color/black"
             app:cornerRadius="50dp"
@@ -98,6 +98,11 @@
     android:id="@+id/LinearLayoutDictionary">
 
 
+
+
+
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="117dp"
@@ -122,7 +127,7 @@
 
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
-                    android:background="@drawable/shape_search"
+                    android:background="@drawable/shape_word"
                     android:gravity="center"
                     android:paddingHorizontal="15dp"
                     android:paddingVertical="5dp"
@@ -142,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/white"
+                    android:background="@drawable/shape_word"
                     android:src="@android:drawable/stat_notify_chat"
                     android:visibility="gone"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -152,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/white"
+                 android:background="@drawable/shape_word"
                     android:src="@drawable/img"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -203,8 +208,10 @@
 
                     android:layout_height="wrap_content"
 
-                    android:gravity="center"
-                    android:background="@drawable/shape_search"
+
+android:gravity="center"
+                    android:background="@drawable/shape_word"
+
                     android:layout_weight="12"
                     android:paddingHorizontal="15dp"
                     android:paddingVertical="5dp"
@@ -217,7 +224,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/green"
+                   android:background="@drawable/shape_word"
                     android:src="@android:drawable/ic_lock_silent_mode_off"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 

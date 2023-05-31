@@ -71,18 +71,16 @@ android:hint="Type a message"
 
     <TextView
         android:id="@+id/tvAiAnswer"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/received_message"
+android:layout_marginLeft="10dp"
+android:layout_marginRight="10dp"
 
-        android:padding="15dp"
+      android:padding="15dp"
         android:text="Ai answer"
         android:textColor="@color/white"
         android:textSize="18dp"
-        app:layout_constraintWidth_percent="0.75"
 
-
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="16dp" />
+ />
 </androidx.constraintlayout.widget.ConstraintLayout>
