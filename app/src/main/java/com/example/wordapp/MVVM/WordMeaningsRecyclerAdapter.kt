@@ -12,6 +12,7 @@ class WordMeaningsRecyclerAdapter(var meanings:ArrayList<Meanings>):RecyclerView
         val tvKind=itemview.findViewById<TextView>(R.id.tvKind)
         val tvKindExp=itemview.findViewById<TextView>(R.id.tvKindExp)
         val tvExample=itemview.findViewById<TextView>(R.id.tvExample)
+        val tvConstant=itemview.findViewById<TextView>(R.id.tvExampleConstant)
 
     }
 
@@ -26,7 +27,12 @@ class WordMeaningsRecyclerAdapter(var meanings:ArrayList<Meanings>):RecyclerView
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvKind.setText(meanings.get(position).partOfSpeech)
+
         holder.tvKindExp.setText((meanings.get(position).definitions!!.get(0).definition))
+        if(meanings.get(position).definitions!!.get(0).example.isNullOrBlank()){
+            holder.tvExample.visibility=View.GONE
+            holder.tvConstant.visibility=View.GONE
+        }
         holder.tvExample.setText((meanings.get(position).definitions!!.get(0).example))
 
 

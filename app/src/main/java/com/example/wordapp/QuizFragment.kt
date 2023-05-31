@@ -135,9 +135,16 @@ class QuizFragment : Fragment(),View.OnClickListener {
     fun observeLiveData(v:View){
         viewModel.questions.observe(viewLifecycleOwner, Observer {
             if(it!=null){
+
                 questList=it
                 binding.submitButton.setText("SUBMIT")
                 showNextQuestion(v)
+            }
+
+        })
+        viewModel.quesError.observe(viewLifecycleOwner,Observer{
+            if(it){
+                binding.quizFragmentLinearLayout.visibility=View.GONE
             }
         })
     }

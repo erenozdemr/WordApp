@@ -9,7 +9,7 @@ import kotlin.random.Random
 
 class QuizViewModel(application: Application):BaseViewModel(application) {
     var questions=MutableLiveData<ArrayList<Question>?>()
-
+    var quesError=MutableLiveData<Boolean>()
     fun getTenQuestion(){
         launch {
             val wordList= WordDatabase(getApplication()).wordDao().getAllWords()
@@ -56,6 +56,7 @@ class QuizViewModel(application: Application):BaseViewModel(application) {
 
             }
             else{
+                quesError.value=true
                 Toast.makeText(getApplication(),"You have to save 10 words at least",Toast.LENGTH_LONG).show()
             }
         }

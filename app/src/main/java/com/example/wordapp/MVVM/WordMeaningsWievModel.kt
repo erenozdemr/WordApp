@@ -27,12 +27,11 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
 
 
 
-    fun refreshData(){
-
-        meaningsErrors.value=false
-        meaningsLoading.value=false
+    fun inTheBeginning(){
+        meaningsErrors.value=true
     }
     fun getWord(url:String,context:Context){
+        meaningsErrors.value=false
         meaningsLoading.value=true
         var manager=RequestManager(context)
         println("getword e girildi")
@@ -40,7 +39,7 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
             override fun onFetchdata(apiResponce: Word, message: String) {
                 println("onfetchdata ya girildi")
 
-                meaningsErrors.value=false
+
                 meaningsLoading.value=false
                 meanings.value=apiResponce
                 isinDatabase()
@@ -51,7 +50,6 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
 
             override fun onError(message: String) {
                 println("on error a girildi")
-
                 meaningsErrors.value=true
             }
 
@@ -102,9 +100,11 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
     }
 
     fun getWordWithID(id:String){
+        meaningsLoading.value=true
         launch {
 
              var dao=WordDatabase.invoke(getApplication()).wordDao()
+            meaningsLoading.value=false
 
              meanings.value=dao.getWord(id)
             isinDatabase()
