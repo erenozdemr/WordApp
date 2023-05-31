@@ -12,189 +12,174 @@
         android:layout_height="wrap_content" android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/shape_card"
-            android:backgroundTint="@color/grey"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dictionary"
-                android:textSize="25dp"
-                android:textColor="@color/black"
-                android:padding="25dp">
-            </TextView>
-            <Button
-                android:id="@+id/btnDictionary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#03A9F4"
-                android:text="Dictionary"
-                app:cornerRadius="30dp"
-                android:layout_alignParentBottom="true"
-                />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/black_ops_one"
+android:textSize="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Welcome " />
+<RelativeLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    >
+
+    <RelativeLayout
+        android:id="@+id/btnDictionary"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_card"
+        android:backgroundTint="@color/grey">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:padding="25dp"
+
+            android:text="Dictionary"
+            android:textColor="@color/black"
+            android:textSize="28dp"></TextView>
 
 
-        </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/shape_card"
-            android:backgroundTint="@color/yellow"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add word"
-                android:textColor="@color/black"
-                android:textSize="25dp"
-                android:padding="25dp">
-            </TextView>
-            <Button
-                android:id="@+id/btnAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#2196F3"
-                android:text="Add word"
-                app:cornerRadius="30dp"
-                android:layout_alignParentBottom="true"
-                />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/dictianary"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-40dp"/>
 
 
-        </RelativeLayout>
+</RelativeLayout>
+
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/shape_card"
-            android:backgroundTint="@color/purple_200"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="quiz"
-                android:textColor="@color/black"
-                android:textSize="25dp"
-                android:padding="25dp">
-            </TextView>
-            <Button
-                android:id="@+id/btnQuiz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#00BCD4"
-                android:text="quiz"
-                app:cornerRadius="30dp"
-                android:layout_alignParentBottom="true"
-                />
-
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
+            android:id="@+id/btnList"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="20dp"
             android:background="@drawable/shape_card"
             android:backgroundTint="@color/teal_200"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:fontFamily="sans-serif-medium"
+                android:padding="25dp"
                 android:text="List words"
-                android:textSize="25dp"
-
                 android:textColor="@color/black"
-                android:padding="25dp">
-            </TextView>
-            <Button
-                android:id="@+id/btnList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#9C27B0"
-                android:text="List words"
-                app:cornerRadius="30dp"
-                android:layout_alignParentBottom="true"
-                />
+                android:textSize="28dp"></TextView>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:src="@drawable/list"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="40dp"/>
 
 
         </RelativeLayout>
 
-
         <RelativeLayout
+            android:id="@+id/btnQuiz"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="20dp"
             android:background="@drawable/shape_card"
-            android:backgroundTint="#4255C1"
+            android:backgroundTint="@color/purple_200"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cards"
+                android:fontFamily="sans-serif-medium"
+                android:padding="25dp"
+                android:text="quiz"
                 android:textColor="@color/black"
-                android:textSize="25dp"
-                android:padding="25dp">
-            </TextView>
-            <Button
-                android:id="@+id/btnCards"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#673AB7"
-                android:text="Cards"
-                app:cornerRadius="30dp"
-                android:layout_alignParentBottom="true"
-                />
-
+                android:textSize="28dp"></TextView>
+<ImageView
+    android:layout_width="140dp"
+    android:layout_height="110dp"
+    android:src="@drawable/quizfp"
+    android:layout_alignParentRight="true"
+android:layout_marginTop="35dp"/>
 
         </RelativeLayout>
 
+
+
         <RelativeLayout
+            android:id="@+id/btnai"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="20dp"
             android:background="@drawable/shape_card"
             android:backgroundTint="@color/grey"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:fontFamily="sans-serif-medium"
+                android:padding="25dp"
                 android:text="Ai Chat"
                 android:textColor="@color/black"
-                android:textSize="25dp"
-                android:padding="25dp">
-            </TextView>
-            <Button
-                android:id="@+id/btnai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#009688"
-                android:text="Ai Chat"
-                app:cornerRadius="30dp"
-                android:layout_alignParentBottom="true"
-                />
+                android:textSize="28dp"></TextView>
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="110dp"
+
+
+                android:layout_marginTop="40dp"
+
+                android:src="@drawable/aii" />
 
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btnCards"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_card"
+            android:backgroundTint="#4255C1"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:padding="25dp"
+                android:text="Cards"
+                android:textColor="#FAF6F6"
+                android:textSize="28dp"></TextView>
+<ImageView
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:src="@drawable/cards"
+    android:layout_alignParentRight="true"
+    android:layout_marginTop="40dp"/>
+
+
+
+        </RelativeLayout>
+
+
 
 
     </LinearLayout>

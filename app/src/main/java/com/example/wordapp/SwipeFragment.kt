@@ -64,7 +64,7 @@ class SwipeFragment : Fragment() {
             if(wordList!=null){
                 var situation=binding.tvGhost.text.toString()
                 var anim=AnimationUtils.loadAnimation(this.requireContext(),R.anim.rotate_card_anim)
-                anim.duration=250
+                anim.duration=300
 
 
                 binding.cwSwipe.animation=anim

@@ -28,10 +28,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnAdd.setOnClickListener {
-            var action=MainFragmentDirections.actionMainFragmentToAddWordFragment()
-            view.findNavController().navigate(action)
-        }
+
         binding.btnList.setOnClickListener {
             var action=MainFragmentDirections.actionMainFragmentToListWordsFragment()
             view.findNavController().navigate(action)
