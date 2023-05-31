@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,54 +7,102 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".DictionaryFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etSearchBox"
+            android:layout_width="290dp"
+            android:layout_height="62dp"
+
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="5"
+            android:background="@drawable/shape_main"
+            android:hint="Search a Word"
+            android:paddingStart="20dp"
+
+            />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="107dp"
+            android:layout_height="67dp"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#5B72E3"
+            android:text="Search"
+            android:textColor="@color/black"
+            app:cornerRadius="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etSearchBox"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/LinearLayoutProgressbar"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        >
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progressBar_cyclic"
+            android:layout_width="match_parent"
+            android:progress="@integer/material_motion_duration_long_1"
+            android:layout_height="match_parent"
+            android:paddingVertical="100dp"
+            android:layout_weight="5"
+            android:minWidth="40dp"
+            android:minHeight="40dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/LinearLayoutTextview"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/tvError"
+            android:text="There is nothing to show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="250dp"
+            android:layout_weight="5"
+             />
+    </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:id="@+id/LinearLayoutDictionary">
 
-    <EditText
-        android:id="@+id/etSearchBox"
-        android:layout_width="290dp"
-        android:layout_height="62dp"
-
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="25dp"
-        android:layout_weight="5"
-        android:background="@drawable/shape_main"
-        android:hint="Search a Word"
-        android:paddingStart="20dp"
-
-        />
-
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="107dp"
-        android:layout_height="67dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="12dp"
-        android:backgroundTint="#5B72E3"
-        android:text="Search"
-        android:textColor="@color/black"
-        app:cornerRadius="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etSearchBox"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
-
-</LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="117dp"
         android:layout_margin="10dp"
-app:cardCornerRadius="15dp"
+        app:cardCornerRadius="15dp"
         app:cardBackgroundColor="#E8ECE6">
 
         <LinearLayout
@@ -110,7 +159,7 @@ app:cardCornerRadius="15dp"
 
             </LinearLayout>
 
-            <EditText
+            <TextView
                 android:id="@+id/etWord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,8 +168,9 @@ app:cardCornerRadius="15dp"
                 android:clickable="false"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="5dp"
+                android:textSize="19dp"
                 android:text="hello"
-                tools:ignore="TouchTargetSizeCheck"></EditText>
+                tools:ignore="TouchTargetSizeCheck"></TextView>
 
 
         </LinearLayout>
@@ -134,7 +184,7 @@ app:cardCornerRadius="15dp"
         app:cardCornerRadius="15dp"
         app:cardBackgroundColor="#E8ECE6"
         tools:ignore="ExtraText">
-     >
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -153,7 +203,7 @@ app:cardCornerRadius="15dp"
 
                     android:layout_height="wrap_content"
 
-android:gravity="center"
+                    android:gravity="center"
                     android:background="@drawable/shape_search"
                     android:layout_weight="12"
                     android:paddingHorizontal="15dp"
@@ -174,17 +224,17 @@ android:gravity="center"
 
             </LinearLayout>
 
-            <EditText
+            <TextView
                 android:id="@+id/etPronunce"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-
+                android:textSize="19dp"
                 android:background="@android:color/transparent"
                 android:clickable="false"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="5dp"
                 android:text="həˈləʊ"
-                tools:ignore="TouchTargetSizeCheck"></EditText>
+                tools:ignore="TouchTargetSizeCheck"></TextView>
 
 
         </LinearLayout>
@@ -203,5 +253,6 @@ android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/etPronunce">
 
     </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -53,7 +54,8 @@ private val args:NoteFragmentArgs by navArgs()
 
             if(!id.isNullOrBlank()&&!id.equals("noid")&&text!=null){
                 viewModel.updateWordnoteWithID(id,text)
-                onPause()
+                onDestroy()
+
             }
         }
         observeLiveData()

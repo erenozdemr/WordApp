@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/quizFragmentLinearLayout"
     tools:context=".QuizFragment"
     android:orientation="vertical"
     android:gravity="center">
@@ -33,7 +34,7 @@
             android:id="@+id/tv_progress"
             android:layout_width="57dp"
             android:layout_height="match_parent"
-            android:text="1/12"
+            android:text="1/10"
             android:textColor="@color/black"
             android:gravity="center"/>
 

@@ -65,7 +65,7 @@ class DictionaryFragment : Fragment(),TextToSpeech.OnInitListener {
 
 
         viewModel= ViewModelProvider(this).get(WordMeaningsWievModel::class.java)
-        viewModel.refreshData()
+        viewModel.inTheBeginning()
 
 
 
@@ -130,7 +130,8 @@ class DictionaryFragment : Fragment(),TextToSpeech.OnInitListener {
 
         viewModel.meanings.observe(viewLifecycleOwner, Observer {
             if(it!=null){
-                println("it is not null")
+                binding.LinearLayoutDictionary.visibility=View.VISIBLE
+                binding.LinearLayoutTextview.visibility=View.GONE
                 recyclerDictionary.visibility=View.VISIBLE
                 var word=it
                 binding.etWord.setText(word.word)
@@ -138,18 +139,28 @@ class DictionaryFragment : Fragment(),TextToSpeech.OnInitListener {
                 adapter.refreshMeanings(word.meanings)
 
             }
+            else{
+                binding.LinearLayoutDictionary.visibility=View.GONE
+            }
         })
         viewModel.meaningsErrors.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if(it){
-                    Toast.makeText(context,"there is and error occured", Toast.LENGTH_LONG).show()
+                    binding.LinearLayoutTextview.visibility=View.VISIBLE
+
                     //buraya daha sonra hata mesajı ekelenbilir
+                }else{
+                    binding.LinearLayoutTextview.visibility=View.GONE
+
                 }
             }
         })
         viewModel.meaningsLoading.observe(viewLifecycleOwner, Observer {
             if(it){
-                Toast.makeText(context,"Word is loading", Toast.LENGTH_LONG).show()// daha sonra progress bar eklenebilir
+
+                binding.LinearLayoutProgressbar.visibility=View.VISIBLE
+            }else{
+                binding.LinearLayoutProgressbar.visibility=View.GONE
             }
         })
         viewModel.meaningsSaved.observe(viewLifecycleOwner, Observer {
