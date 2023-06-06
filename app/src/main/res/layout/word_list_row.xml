@@ -32,7 +32,8 @@
             android:layout_marginTop="25dp"
             android:id="@+id/tvMeaning"
             android:text="an utterance of ‘hello’; a greeting."
-            android:textColor="#353434"
+            android:textColor="#1C1B1B"
+
             android:textSize="16dp"
             android:padding="26dp">
 

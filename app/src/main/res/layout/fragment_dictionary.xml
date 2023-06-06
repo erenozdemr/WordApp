@@ -134,6 +134,7 @@
                     android:text="Word"
                     android:textSize="20dp"
                     android:textStyle="bold"
+
                     ></TextView>
                 <TextView
                     android:layout_width="wrap_content"
@@ -175,6 +176,8 @@
                 android:paddingVertical="5dp"
                 android:textSize="19dp"
                 android:text="hello"
+                android:textColor="@color/black"
+
                 tools:ignore="TouchTargetSizeCheck"></TextView>
 
 
@@ -240,6 +243,8 @@ android:gravity="center"
                 android:clickable="false"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="5dp"
+                android:textColor="@color/black"
+
                 android:text="həˈləʊ"
                 tools:ignore="TouchTargetSizeCheck"></TextView>
 

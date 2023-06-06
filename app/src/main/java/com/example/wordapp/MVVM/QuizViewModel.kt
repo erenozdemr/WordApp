@@ -52,7 +52,7 @@ class QuizViewModel(application: Application):BaseViewModel(application) {
 
                 }
                 questions.value=tenQues
-
+                quesError.value=false
 
             }
             else{

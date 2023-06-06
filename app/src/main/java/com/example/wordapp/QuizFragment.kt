@@ -145,6 +145,10 @@ class QuizFragment : Fragment(),View.OnClickListener {
         viewModel.quesError.observe(viewLifecycleOwner,Observer{
             if(it){
                 binding.quizFragmentLinearLayout.visibility=View.GONE
+                binding.QuizFragmentErrorLayout.visibility=View.VISIBLE
+            }else{
+                binding.quizFragmentLinearLayout.visibility=View.VISIBLE
+                binding.QuizFragmentErrorLayout.visibility=View.GONE
             }
         })
     }
