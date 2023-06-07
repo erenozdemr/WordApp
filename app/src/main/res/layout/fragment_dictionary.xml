@@ -58,18 +58,19 @@
         android:id="@+id/LinearLayoutProgressbar"
         android:gravity="center_vertical"
         android:layout_gravity="center"
+        android:visibility="gone"
         >
 
         <ProgressBar
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/progressBar_cyclic"
-            android:layout_width="match_parent"
-            android:progress="@integer/material_motion_duration_long_1"
+            android:layout_width="0dp"
+
+            android:indeterminate="true"
             android:layout_height="match_parent"
             android:paddingVertical="100dp"
             android:layout_weight="5"
-            android:minWidth="40dp"
-            android:minHeight="40dp" />
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"

@@ -1,13 +1,9 @@
 package com.example.wordapp.services
 
 import android.content.Context
-import android.os.Parcel
-import android.os.Parcelable
 import android.widget.Toast
 import com.example.wordapp.MVVM.Word
-import io.reactivex.Single
 import retrofit2.*
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -23,18 +19,21 @@ class RequestManager(var context: Context) {
     fun getWordMeaning(listener:onFetchDataListener,wordInput:String)  {
         var callDictionary=api.create(DictionaryAPI::class.java)
         var word : Call<ArrayList<Word>> = callDictionary.getWord(wordInput)
-        println("get word meaning e girildi")
         try {
+
             word.enqueue( object: Callback<ArrayList<Word>>{
                 override fun onResponse(
                     call: Call<ArrayList<Word>>,
                     response: Response<ArrayList<Word>>
                 ) {
                     if(!response.isSuccessful){
-                        Toast.makeText(context,"An error occured",Toast.LENGTH_LONG).show()
-                        return
+                        Toast.makeText(context,"An error occurred",Toast.LENGTH_LONG).show()
+                        listener.onFetchdata(null,response.message())
+
+                    }else{
+                        listener.onFetchdata(response.body()!!.get(0),response.message())
                     }
-                    listener.onFetchdata(response.body()!!.get(0),response.message())
+
 
                 }
 
@@ -48,9 +47,11 @@ class RequestManager(var context: Context) {
 
 
 
+
         }catch (e:java.lang.Exception){
             e.printStackTrace()
-            Toast.makeText(context,"An error occured",Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"An error occurred",Toast.LENGTH_LONG).show()
+
         }
     }
 

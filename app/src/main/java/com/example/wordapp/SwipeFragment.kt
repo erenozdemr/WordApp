@@ -1,11 +1,15 @@
 package com.example.wordapp
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AnimationUtils
+import android.view.animation.DecelerateInterpolator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.AnimBuilder
@@ -60,21 +64,32 @@ class SwipeFragment : Fragment() {
                 }
             }
         }
+        val rotateAnimator = ObjectAnimator.ofFloat(binding.cwSwipe, "rotationY", 0f, 180f)
+        rotateAnimator.duration = 300
+        rotateAnimator.interpolator = AccelerateDecelerateInterpolator()
+
+        rotateAnimator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+                binding.tvSwipe.setText("")
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                if (binding.cwSwipe.rotationY == 180f) {
+                    binding.tvSwipe.scaleX = -1f
+                } else {
+                    binding.tvSwipe.scaleX = 1f
+                }
+                setTV()
+            }
+
+            override fun onAnimationCancel(animation: Animator) {setTV()}
+
+            override fun onAnimationRepeat(animation: Animator) {}
+        })
         binding.cwSwipe.setOnClickListener {
             if(wordList!=null){
-                var situation=binding.tvGhost.text.toString()
-                var anim=AnimationUtils.loadAnimation(this.requireContext(),R.anim.rotate_card_anim)
-                anim.duration=300
-
-
-                binding.cwSwipe.animation=anim
-                if(situation.equals("word")){
-                    showMeaning(wordList!!.get(index))
-                }else{
-                    showWord(wordList!!.get(index))
-                }
-
-
+                
+                rotateAnimator.start()
 
             }
         }
@@ -92,6 +107,15 @@ class SwipeFragment : Fragment() {
 
             }
         })
+    }
+    fun setTV(){
+        var situation=binding.tvGhost.text.toString()
+
+        if(situation.equals("word")){
+            showMeaning(wordList!!.get(index))
+        }else{
+            showWord(wordList!!.get(index))
+        }
     }
     fun showWord(word:Word){
         binding.tvSwipe.setText(word.word)
