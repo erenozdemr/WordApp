@@ -112,7 +112,7 @@ android:textSize="60dp"
 <ImageView
     android:layout_width="140dp"
     android:layout_height="110dp"
-    android:src="@drawable/quizfp"
+    android:src="@drawable/quizf_preview_rev_2"
     android:layout_alignParentRight="true"
 android:layout_marginTop="35dp"/>
 
