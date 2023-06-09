@@ -33,6 +33,7 @@ class WordMeaningsWievModel(application: Application):BaseViewModel(application)
             override fun onFetchdata(apiResponce: Word?, message: String) {
 
                 if(apiResponce!=null){
+                    meaningsLoading.value=false
                     meanings.value=apiResponce
                     isinDatabase()
                 }else{

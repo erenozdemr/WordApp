@@ -88,7 +88,7 @@ class SwipeFragment : Fragment() {
         })
         binding.cwSwipe.setOnClickListener {
             if(wordList!=null){
-                
+
                 rotateAnimator.start()
 
             }

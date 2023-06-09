@@ -27,8 +27,10 @@ class AiActivity : AppCompatActivity() {
         binding.btnSubmit.setOnClickListener {
             var ques=binding.etAiQuestion.text.toString()
             if(ques!=null){
+                binding.etAiQuestion.text=null
                 getresponse(ques){response->
                     runOnUiThread {
+
                         binding.tvAiAnswer.setText(response)
                     }
 
@@ -44,19 +46,14 @@ class AiActivity : AppCompatActivity() {
     fun getresponse(question: String, callback: (String) -> Any){
 
         try{
-            val apikey="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"
+            val apikey=""
             val url="https://api.openai.com/v1/completions"
             val requestBody="""
             {
-            "model": "gpt-3.5-turbo-0301",
+            "model": "text-davinci-003",
   "prompt": "$question",
-  "max_tokens": 7,
-  "temperature": 0,
-  "top_p": 1,
-  "n": 1,
-  "stream": false,
-  "logprobs": null,
-  "stop": "\n"
+  "max_tokens": 500,
+  "temperature": 0
             }
         """.trimIndent()
 
@@ -82,7 +79,7 @@ class AiActivity : AppCompatActivity() {
                         callback(text)
                     }catch (e:Exception){
                         e.printStackTrace()
-                        Toast.makeText(applicationContext,e.localizedMessage,Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext,"An error occurred",Toast.LENGTH_LONG).show()
                     }
 
                 }

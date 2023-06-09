@@ -133,6 +133,7 @@ class DictionaryFragment : Fragment(),TextToSpeech.OnInitListener {
                 binding.LinearLayoutDictionary.visibility=View.VISIBLE
                 binding.LinearLayoutTextview.visibility=View.GONE
                 recyclerDictionary.visibility=View.VISIBLE
+
                 var word=it
                 binding.etWord.setText(word.word)
                 binding.etPronunce.setText(word.phonetic.get(0).text)
