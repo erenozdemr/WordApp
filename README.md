@@ -1,4 +1,4 @@
-#WordApp
+
 Word App is a mobile application developed using Kotlin and Android Studio. This project allows you to note down the meanings of English words, record the meaning and usage examples of the word you want, and improve your pronunciation skills by listening to them aloud. It also supports you to learn English with a quiz and a mixed card game created from the words you have noted. Thanks to the AI chat section, you can chat in English simultaneously.
 
 Below you can find the technologies and components used:
