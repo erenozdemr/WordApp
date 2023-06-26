@@ -16,9 +16,9 @@ Navigation: Android Navigation Component was used to manage screen transitions.
 LiveData: LiveData was used to provide data flow between ViewModel and View.
 
 These technologies and components help Word App provide a powerful, efficient and user-friendly experience.
-![app1](https://github.com/erenozdemr/WordApp/assets/116838734/3bbb2c69-34ad-4c29-a5b4-ad49bd74b8e5)
-![app2](https://github.com/erenozdemr/WordApp/assets/116838734/a2809b41-eac8-4b84-b4c3-cbf8057ae061)
+![WhatsApp Image 2023-06-26 at 15 50 45](https://github.com/erenozdemr/WordApp/assets/116838734/182950f0-18b3-473a-8e3d-b90bf6fca79a)
 
+![WhatsApp Image 2023-06-26 at 15 50 45 (1)](https://github.com/erenozdemr/WordApp/assets/116838734/55b237a8-aed0-4499-a181-f2c34296ac96)
 
 
 
